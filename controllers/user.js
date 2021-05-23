@@ -22,11 +22,13 @@ exports.updateProfile = async function(req,res){
 exports.updatePassword = function(req,res){
 
 }
+exports.loginPass = function(req,res){
+    
+}
 exports.login =  function(req, res) {
     let _username = req.body.username
     let _password = req.body.password
     var User = new UserSchema({   
-        
         username:_username,
         password:_password
     })

@@ -1,6 +1,7 @@
 var express = require('express');
 const session = require('express-session');
 var path = require('path');
+var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({secret: 'secret',saveUninitialized: true,resave: true,cookie:{maxAge:3600000}}));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
 require('./routes/main.js')(routerApp);
 app.use('/api', routerApp)
 module.exports = app;
